@@ -11,7 +11,7 @@ class GameLogic:
         param: integer between 1 and 6
         :return: tuple with random values between 1 and 6.
         """
-        return tuple(randint(1, 1) for _ in range(0, num_dice))
+        return tuple(randint(1, 6) for _ in range(0, num_dice))
 
     @staticmethod
     def calculate_score(roll_tuple):
