@@ -31,25 +31,16 @@ class GameLogic:
         if (counted_dice[0][1]) >= 3:
             if counted_dice[0][0] != 1:
                 total_score += counted_dice[0][0] * 100 * (counted_dice[0][1] - 2)
-                if counted_dice[0][1] == 6:
-                    return total_score
-                counted_dice = counted_dice[1:]
-                print(counted_dice)
             else:
                 total_score += 1000 * (counted_dice[0][1] - 2)
-                if counted_dice[0][1] == 6:
-                    return total_score
-                counted_dice = counted_dice[1:]
+            counted_dice = counted_dice[1:]
 
             # Two 3 of a kinds
-            if len(counted_dice) == 1:
-                if counted_dice[0][1] == 3:
-                    if counted_dice[0][0] != 1:
-                        total_score += counted_dice[0][0] * 100
-                        return total_score
-                    else:
-                        total_score += 1000
-                        return total_score
+            if len(counted_dice) == 1 and counted_dice[0][1] == 3:
+                if counted_dice[0][0] != 1:
+                    total_score += counted_dice[0][0] * 100
+                else:
+                    total_score += 1000
 
         # Straight
         if len(counted_dice) == 6:
@@ -57,17 +48,15 @@ class GameLogic:
             return total_score
 
         # Three Pairs
-        if len(counted_dice) == 3:
-            if counted_dice[2][1] == 2:
-                total_score += 1500
-                return total_score
+        if len(counted_dice) == 3 and counted_dice[2][1] == 2:
+            total_score += 1500
+            return total_score
 
         # Single 5 or Single 1
         else:
             for dice in counted_dice:
                 if dice[0] == 5:
                     total_score += dice[1] * 50
-            for dice in counted_dice:
                 if dice[0] == 1:
                     total_score += dice[1] * 100
 
