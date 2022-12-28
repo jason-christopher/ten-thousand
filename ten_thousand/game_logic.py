@@ -22,7 +22,6 @@ class GameLogic:
 
         total_score = 0
         counted_dice = Counter(roll_tuple).most_common()
-        print(counted_dice)
 
         if not counted_dice:
             return total_score
@@ -60,7 +59,6 @@ class GameLogic:
                 if dice[0] == 1:
                     total_score += dice[1] * 100
 
-        print("Total Score", total_score)
         return total_score
 
 
