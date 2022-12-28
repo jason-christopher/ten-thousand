@@ -13,8 +13,8 @@ def test_single_five():
 
 # @pytest.mark.skip("TODO")
 def test_single_custom():
-    actual = GameLogic.calculate_score((3, 3, 4, 4, 1, 4))
-    expected = 500
+    actual = GameLogic.calculate_score((5, 5, 5, 4, 1, 4))
+    expected = 600
     assert actual == expected
 
 

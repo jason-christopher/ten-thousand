@@ -1,11 +1,19 @@
-# Challenge Summary
-<!-- Description of the challenge -->
+# LAB - Class 06
 
-## Whiteboard Process
-<!-- Embedded whiteboard image -->
+## Project: Ten-Thousand Game
 
-## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+### Author: Jason Christopher & Matthew Gebhart
 
-## Solution
-<!-- Show how to run your code, and examples of it in action -->
+### Links and Resources
+
+* <http://www.playonlinedicegames.com/farkle>
+* <https://en.wikipedia.org/wiki/Dice_10000>
+
+### Setup
+
+* `pip install pytest-watch`
+*  Activate Virtual Environment
+
+### Tests
+
+* Ran pytest-watch on the given tests and customized as necessary.

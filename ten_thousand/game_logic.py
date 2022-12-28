@@ -22,6 +22,7 @@ class GameLogic:
 
         total_score = 0
         counted_dice = Counter(roll_tuple).most_common()
+        print(counted_dice)
 
         if not counted_dice:
             return total_score
@@ -33,6 +34,7 @@ class GameLogic:
                 if counted_dice[0][1] == 6:
                     return total_score
                 counted_dice = counted_dice[1:]
+                print(counted_dice)
             else:
                 total_score += 1000 * (counted_dice[0][1] - 2)
                 if counted_dice[0][1] == 6:
@@ -48,11 +50,11 @@ class GameLogic:
                     else:
                         total_score += 1000
                         return total_score
+
         # Straight
         if len(counted_dice) == 6:
-            if counted_dice[0][1] == 1:
-                total_score += 1500
-                return total_score
+            total_score += 1500
+            return total_score
 
         # Three Pairs
         if len(counted_dice) == 3:
