@@ -1,4 +1,5 @@
 from random import randint
+from collections import Counter
 
 
 class GameLogic:
@@ -7,69 +8,101 @@ class GameLogic:
     def roll_dice(num_dice):
         """
 
-        :param: integer between 1 and 6
+        param: integer between 1 and 6
         :return: tuple with random values between 1 and 6.
         """
         return tuple(randint(1, 1) for _ in range(0, num_dice))
 
+    @staticmethod
+    def calculate_score(roll_tuple):
+        """
+        param: a tuple of integers that represent a dice roll.
+        :return: an integer representing the roll’s score according to rules of game.
+        """
 
-# Why
-# We're pretty good as humans at intuitively counting things, at least until the numbers get big.
-#
-# E.g. Look at a fruit basket and tell the most common fruit. We can usually do a decent job at that without spending too much time thinking about it.
-#
-# How can we tell a computer to do it?
+        total_score = 0
 
-fruit = ["apple", "banana", "orange", "apple", "banana", "apple"]
+        counted_dice = Counter(roll_tuple).most_common()
+        print(counted_dice)
 
-# Write code to determine fruit is most common?
-# What about 2nd most?
-# Least common?
-# attempt #1
-fruit_map = {}
-for piece in fruit:
-    current_count = fruit_map.get(piece, 0)
-    fruit_map[piece] = current_count + 1
+        if not counted_dice:
+            return total_score
 
-print(fruit_map)
-{'apple': 3, 'banana': 2, 'orange': 1}
+        # 3, 4, 5, and 6 of a kind
+        if (counted_dice[0][1]) >= 3:
+            if counted_dice[0][1] == 3:
+                if counted_dice[0][0] != 1:
+                    total_score += counted_dice[0][0] * 100
+                    print(counted_dice[0][0] * 100)
+                    counted_dice = counted_dice[1:]
+                else:
+                    total_score += 1000
+                    print(total_score)
+                    counted_dice = counted_dice[1:]
+            elif counted_dice[0][1] == 4:
+                if counted_dice[0][0] != 1:
+                    total_score += counted_dice[0][0] * 200
+                    print(counted_dice[0][0] * 200)
+                    counted_dice = counted_dice[1:]
+                else:
+                    total_score += 2000
+                    print(total_score)
+                    counted_dice = counted_dice[1:]
+            elif counted_dice[0][1] == 5:
+                if counted_dice[0][0] != 1:
+                    total_score += counted_dice[0][0] * 300
+                    print(counted_dice[0][0] * 300)
+                    counted_dice = counted_dice[1:]
+                else:
+                    total_score += 3000
+                    print(total_score)
+                    counted_dice = counted_dice[1:]
+            elif counted_dice[0][1] == 6:
+                if counted_dice[0][0] != 1:
+                    total_score += counted_dice[0][0] * 400
+                    print(counted_dice[0][0] * 400)
+                    return total_score
+                else:
+                    total_score += 4000
+                    print(total_score)
+                    return total_score
 
-most_common_count = 0
-most_common_fruit = None
+            # Two 3 of a kinds
+            if len(counted_dice) == 1:
+                if counted_dice[0][1] == 3:
+                    if counted_dice[0][0] != 1:
+                        print(counted_dice[0][0] * 100)
+                        total_score += counted_dice[0][0] * 100
+                        return total_score
+                    else:
+                        total_score += 1000
+                        print(total_score)
+                        return total_score
+        # Straight
+        if len(counted_dice) == 6:
+            if counted_dice[0][1] == 1:
+                total_score += 1500
+                print("Total Score", total_score)
+                return total_score
 
-for fruit_name in fruit_map:
-    if fruit_map[fruit_name] > most_common_count:
-        most_common_count = fruit_map[fruit_name]
-        most_common_fruit = fruit_name
+        # Three Pairs
+        if len(counted_dice) == 3:
+            if counted_dice[2][1] == 2:
+                total_score += 1500
+                print("Total Score", total_score)
+                return total_score
 
-print(most_common_fruit)
-# apple
+        # Single 5 or Single 1
+        else:
+            for dice in counted_dice:
+                if dice[0] == 5:
+                    total_score += dice[1] * 50
+            for dice in counted_dice:
+                if dice[0] == 1:
+                    total_score += dice[1] * 100
 
-# That works, at least for most common.
-# Could probably do similar thing for least common
-# Not sure what to do about frequencies in the middle
-# And that took a fair amount of code.
-# What
-# It turns out that the Python Standard Library has a very handy module to help us out...
-# How
-# Since it's in Standard Library we don't need to install it
-# Just import and use
+        print("Total Score", total_score)
+        return total_score
 
-from collections import Counter
 
-fruit_counter = Counter(fruit)
 
-print(fruit_counter)
-# Counter({'apple': 3, 'banana': 2, 'orange': 1})
-
-# Well look at that, we got a dictionary (or at least something dictionary like) for cheap.
-# It gets better
-
-most_common = fruit_counter.most_common()
-print(most_common)
-# [('apple', 3), ('banana', 2), ('orange', 1)]
-
-# "You're welcome" - Python Standard Library
-
-# Pro Tip: Great place to find out about Counter and more is Python Module of the Week
-# https://pymotw.com/3/
