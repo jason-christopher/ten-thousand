@@ -1,5 +1,3 @@
-
-
 import pytest
 from ten_thousand.game_logic import GameLogic
 
