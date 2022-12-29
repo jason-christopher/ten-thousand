@@ -9,6 +9,10 @@
 * <http://www.playonlinedicegames.com/farkle>
 * <https://en.wikipedia.org/wiki/Dice_10000>
 
+### Whiteboard
+
+![Whiteboard](images/10000_Lab_with_Jason_V2.png)
+
 ### Setup
 
 * `pip install pytest-watch`

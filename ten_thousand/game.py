@@ -42,7 +42,7 @@ def play_dice(roller=default_roller):
             current_dice = []
             dice_roll = []
             round_score = 0
-            round_number = round_number + 1
+            round_number += 1
             print(f"Total score is {total_score} points")
             print(f"Starting round {round_number}")
         else:
