@@ -64,13 +64,13 @@ def play_dice(roller=default_roller):
                 total_score += round_score
                 print(f"Total score is {total_score} points")
                 current_dice = []
-                dice_roll = []
                 round_score = 0
                 round_number = round_number + 1
                 print(f"Starting round {round_number}")
             if choice == "q":
                 print(f"Thanks for playing. You earned {total_score} points")
                 break
+            dice_roll = []
 
 
 if __name__ == "__main__":
