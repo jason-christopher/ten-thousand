@@ -74,7 +74,7 @@ def play_dice(roller=default_roller):
 
 
 if __name__ == "__main__":
-    rolls = []
+    rolls = [(1, 2, 1, 2, 3, 3)]
 
     def mock_roller(num):
         return rolls.pop(0) if rolls else default_roller(num)
