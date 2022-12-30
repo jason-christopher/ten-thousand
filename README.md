@@ -1,4 +1,4 @@
-# LAB - Class 06-07
+# LAB - Class 06-07-08
 
 ## Project: Ten-Thousand Game
 
@@ -12,6 +12,7 @@
 ### Whiteboard
 
 ![Whiteboard](images/10000_Lab_with_Jason_V2.png)
+![Whiteboard2](images/ten_thousand_v3_wb.png)
 
 ### Setup
 
