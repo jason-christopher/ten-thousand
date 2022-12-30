@@ -16,7 +16,8 @@
 ### Setup
 
 * `pip install pytest-watch`
-*  Activate Virtual Environment
+* Activate Virtual Environment
+* Start the game by running `python -m ten_thousand.game` in the terminal
 
 ### Tests
 

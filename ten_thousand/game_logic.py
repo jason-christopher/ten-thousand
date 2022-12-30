@@ -61,5 +61,16 @@ class GameLogic:
 
         return total_score
 
-
-
+    @staticmethod
+    def validate_keepers(nums, keep):
+        nums = list(nums)
+        keep = list(keep)
+        if keep == []:
+            return False
+        for dice in keep:
+            is_there = nums.count(dice)
+            if is_there > 0:
+                nums.remove(dice)
+            else:
+                return False
+        return True

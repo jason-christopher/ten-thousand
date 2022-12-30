@@ -28,7 +28,8 @@ def play_dice(roller=default_roller):
     round_score = 0
 
     while currently_playing:
-
+        if len(current_dice) == 6:
+            current_dice = []
         print(f"Rolling {6 - len(current_dice)} dice...")
         roll = roller(6 - len(current_dice))
         roll_str = ""
@@ -56,6 +57,8 @@ def play_dice(roller=default_roller):
                 current_dice.append(int(character))
                 dice_roll.append(int(character))
             round_score += GameLogic.calculate_score(tuple(dice_roll))
+            if len(current_dice) == 6:
+                current_dice = []
             print(f"You have {round_score} unbanked points and {6 - len(current_dice)} dice remaining")
             print(f"(r)oll again, (b)ank your points or (q)uit:")
             choice = input("> ")
@@ -74,7 +77,7 @@ def play_dice(roller=default_roller):
 
 
 if __name__ == "__main__":
-    rolls = [(1, 2, 1, 2, 3, 3)]
+    rolls = []
 
     def mock_roller(num):
         return rolls.pop(0) if rolls else default_roller(num)
