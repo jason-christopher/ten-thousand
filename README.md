@@ -1,4 +1,4 @@
-# LAB - Class 06-07-08
+# LAB - Class 06-07-08-44
 
 ## Project: Ten-Thousand Game
 
@@ -19,6 +19,7 @@
 * `pip install pytest-watch`
 * Activate Virtual Environment
 * Start the game by running `python -m ten_thousand.game` in the terminal
+* Run my bot by running `python -m bots` in the terminal
 
 ### Tests
 
